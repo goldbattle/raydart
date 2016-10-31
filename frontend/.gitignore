@@ -1,0 +1,15 @@
+# Ignore visual code folder
+.vscode/
+
+# idea ide
+.idea/
+out/
+
+# Ignore binaries
+debug
+web.exe
+
+# Ignore test repositories folder
+private/
+!private/.gitkeep
+!private/repositories/.gitkeep

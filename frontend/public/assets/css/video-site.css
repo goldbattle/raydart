@@ -1,0 +1,173 @@
+body {
+ background-color: #f3f3f3;
+}
+
+/* Main login panel, lower it down */
+#twitch-login {
+  margin-top: 50%;
+  text-align: center;
+}
+
+/* Twitch Dark Login Button */
+#twitch-connect {
+  margin-top:30px;
+  margin-bottom:10px;
+}
+
+/* Whiter Nav to contrast body */
+.navbar-default {
+  background-color: #fff;
+}
+
+/* Footer copyright */
+.copyright {
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+/* Core Content Panel */
+.main-content {
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+     -moz-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+          box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+}
+
+/* Post Panel */
+.post-content {
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+     -moz-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+          box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+}
+
+/* Video Panel */
+.video-content {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+     -moz-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+          box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+}
+
+/* Download Panel */
+.download-panel {
+  width: 100%;
+  color: black;
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+  -moz-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.15);
+}
+
+/* Do not change text color on hover */
+.download-panel:hover {
+  text-decoration: none;
+  color: black;
+}
+
+/* Define size, scroll if over it */
+.download-text {
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-top: 10px;
+  height: 40px;
+  /* Disable scroll in browsers */
+  overflow-y: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+/* Disable the chrome bar in chrome/firefox */
+.download-text::-webkit-scrollbar {
+  display: none;
+}
+
+/* Handle chat size */
+#chat_embed {
+  height: 300px;
+  width: 100%;
+}
+
+/* If not mobile, flush up chat to video */
+@media (min-width:1200px) { 
+  #video-col {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  #image-col {
+    padding-left: 0px;
+  }
+}
+
+/* Turn off large play button */
+.vjs-default-skin.vjs-paused .vjs-big-play-button {
+  display: none;
+}
+
+/* Turn on menu controls */
+.vjs-default-skin.vjs-paused .vjs-control-bar {
+  display: block;
+}
+
+/* Viewer count text overlay formating */
+.vjs-default-skin .vjs-viewer-count {
+  font-size: 1.1em;
+  line-height: 2.7;
+  float:right;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/* Bitrate select formating */
+.vjs-default-skin .vjs-bitrate-select {
+  font-size: 1.1em;
+  line-height: 2.7;
+  margin-right: 10px;
+  float:right;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Styling for the birate selection popup */
+#bitrate-popup {
+  /* Show div ontop of fullscreen */
+  z-index: 2147483647;
+  /* Rest of styles */
+  font-size: 0.85em;
+  height: auto;
+  width: auto;
+  padding: 5px;
+  display: none;
+  padding: 0px;
+  color: white;
+  background-color: rgba(7,20,30,.7);
+}
+
+#bitrate-popup li {
+  padding: 1px 4px;
+  cursor: pointer;
+}
+
+#bitrate-popup li:hover {
+  background-color: rgba(2,6,9,.9);
+}
+
+/* Override class, to prevent control bar from disapearing */
+.bitrate-active {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
