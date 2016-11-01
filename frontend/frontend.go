@@ -38,7 +38,7 @@ func main() {
 
 	// Routes
 	e.GET("/", controller.HomeGET)
-	//e.GET("/repo/:hash/", controller.RepoGET)
+	e.GET("/origin/:stream/", controller.StreamGET)
 	//e.GET("/repo/:hash/tree/*", controller.RepoGET)
 	//e.GET("/repo/:hash/blob/*", controller.RepoGET)
 

@@ -1,4 +1,4 @@
-{{define "home"}}
+{{define "stream"}}
 
 <!DOCTYPE html>
 <!-- Copyright Sevadus Gaming -->
@@ -32,15 +32,59 @@
 </noscript>
 
 <!-- Main Content -->
-<div class="container">
-    <br/> <br/> <br/> <br/>
-    You need to visit a different URL. <br/>
-    This has not been implemented yet...
+<div class="container-fluid">
+    <div class="row">
+        <!-- Stream Player -->
+        <div class="col-md-12 col-lg-10 col-lg-offset-1 video-content" id="video-col">
+            <div class="embed-responsive embed-responsive-16by9">
+                <video id="stream-video" class="embed-responsive-item video-js vjs-default-skin" autoplay=true controls width="auto" height="auto">
+                    <source src="rtmp://shat.pgeneva.com:1935/origin/{{.}}" type="rtmp/flv" data-res="1080p" />
+                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bitrate menu -->
+    <div id="bitrate-popup"></div>
+
 </div>
+
 </body>
 
 <!-- Site Scripts -->
 <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/js/video.js"></script>
+<script type="text/javascript" src="/assets/js/videojs-media-sources.js"></script>
+<script type="text/javascript" src="/assets/js/videojs.hls.js"></script>
+<script type="text/javascript" src="/assets/js/video-site.js?v=0.10"></script>
+
+<!-- Stream Plugins -->
+<script type="text/javascript" src="/assets/js/videojs-plugins.js"></script>
+<!-- Stream Video Script -->
+<script type="text/javascript">
+$(document).ready(function() {
+  // Init our player
+  var player = videojs("stream-video", {
+    // Fallback order
+    techOrder: ['hls', 'html5', 'flash'],
+    // Where our flash file is
+    flash: {
+      swf: '/assets/swf/video-js.swf'
+    },
+    // Add the viewercount plugin
+    plugins : {
+      'view-count' : {},
+      'bitrate-select' : {}
+    }
+  });
+  // Remove unneeded controls
+  player.controlBar.durationDisplay.disable();
+  player.controlBar.timeDivider.disable();
+  // Set volume down
+  player.volume(0.75);
+});
+</script>
 
 <!-- Footer -->
 <footer>

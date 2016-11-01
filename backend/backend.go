@@ -138,32 +138,48 @@ func main() {
 	// we will want to implement something such as stream_keys that only allow
 	// verified people to stream to the server and serve the content
 	server.HandlePublish = func(conn *rtmp.Conn) {
+
+		// Lock the channel object
+		// We are going to add a new stream to it
 		l.Lock()
 		ch := channels[conn.URL.Path]
+
+		// If the channel is nil, add it as a new one
 		if ch == nil {
+			// Create a new channel
 			ch = &Channel{}
 			ch.que = pubsub.NewQueue()
 			query := conn.URL.Query()
+			// Sets the cache gop size
 			if q := query.Get("cachegop"); q != "" {
 				var n int
 				fmt.Sscanf(q, "%d", &n)
 				ch.que.SetMaxGopCount(n)
 			}
+			// Save it to the data structure
 			channels[conn.URL.Path] = ch
 		} else {
 			ch = nil
 		}
 		l.Unlock()
+
+		// If the channel is nil then it should have ended
+		// Thus we tell the client that it is not valid
 		if ch == nil {
 			return
 		}
 
+		// Start copying the file into the buffer so that we can
+		// Distribute it to clients that are listening to it
 		fmt.Printf("Channel Starting: %s\n",conn.URL.Path)
 		avutil.CopyFile(ch.que, conn)
 
+		// After the broadcast stream ends, we should remove it
 		l.Lock()
 		delete(channels, conn.URL.Path)
 		l.Unlock()
+
+		// Finally close the master queue
 		ch.que.Close()
 		fmt.Printf("Channel Closed: %s\n",conn.URL.Path)
 	}
