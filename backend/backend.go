@@ -75,7 +75,7 @@ func (self *FrameDropper) ModifyPacket(pkt *av.Packet, streams []av.CodecData, v
 func main() {
 
 	// Enable debug
-	rtmp.Debug = true
+	//rtmp.Debug = true
 
 	// Create rtmp server
 	server := &rtmp.Server{}

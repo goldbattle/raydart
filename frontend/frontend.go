@@ -1,7 +1,7 @@
 package main
 
 import (
-	"pgeneva/cratonica/frontend/app/controller"
+	"github.com/goldbattle/raydart/frontend/app/controller"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
